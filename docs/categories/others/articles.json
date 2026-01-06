@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Git 工作流最佳实践",
+    "date": "2025-12-28",
+    "category": "others",
+    "tags": [
+      "其他1",
+      "其他2"
+    ],
+    "url": "/posts/2025/git-workflow/",
+    "reading_time": 5
+  },
+  {
+    "title": "Docker Compose 实战",
+    "date": "2025-11-23",
+    "category": "others",
+    "tags": [
+      "其他1",
+      "其他2"
+    ],
+    "url": "/posts/2025/docker-compose/",
+    "reading_time": 5
+  },
+  {
+    "title": "Linux Shell 脚本编程",
+    "date": "2025-11-22",
+    "category": "others",
+    "tags": [
+      "其他1",
+      "其他2"
+    ],
+    "url": "/posts/2025/linux-shell/",
+    "reading_time": 5
+  }
+]

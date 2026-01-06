@@ -1,0 +1,78 @@
+site_name: zhaotian
+site_description: with passion as my torch, I seek life's deep significance
+site_url: http://localhost:8000/
+repo_url: https://github.com/yourname/yourblog
+
+# 主题配置
+theme:
+  name: null
+  custom_dir: custom_theme
+
+# 静态资源目录
+extra_css: []
+extra_javascript: []
+
+# 复制静态资源目录到构建输出
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourname
+    - icon: fontawesome/solid/envelope
+      link: mailto:your@email.com
+nav:
+  - 首页: index.md
+  - 文章: posts/index.md
+  - 分类: categories/index.md
+  - 归档: archives/index.md
+  - 标签: tags/index.md
+  - 关于: about/index.md
+
+# Markdown 扩展
+markdown_extensions:
+  - tables
+  - fenced_code
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+
+# 插件配置
+plugins:
+  - search
+
+# Hooks 配置
+hooks:
+  - hooks.py
+
+# 额外配置
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourname
+    - icon: fontawesome/solid/envelope
+      link: mailto:your@email.com
+
+# 开发服务器配置
+dev_addr: 127.0.0.1:8000
+
+# URL配置
+use_directory_urls: true
+
+# 验证配置 - 忽略未在nav中声明的页面警告
+validation:
+  nav:
+    not_found: warn
+    omitted_files: ignore

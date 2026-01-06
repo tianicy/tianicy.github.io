@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
+    <meta name="description" content="{{ config.site_description }}">
+    
+    <!-- 网站图标 -->
+    <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | url }}">
+    <link rel="alternate icon" type="image/png" href="{{ '/assets/images/favicon.png' | url }}" sizes="32x32">
+    <meta name="theme-color" content="#61A5FA">
+    
+    <!-- Tailwind CSS v4 Browser CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- DaisyUI v5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5.5.14/daisyui.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Custom Styles -->
+    <style>
+        /* ===== 全局变量定义 ===== */
+        :root {
+            /* 暗色模式配色 */
+            --dark-bg-primary: rgba(18, 21, 30, 0.6);
+            --dark-bg-secondary: rgba(24, 28, 40, 0.7);
+            --dark-accent-ice: #61A5FA;
+            --dark-accent-cyan: #4DEEEA;
+            --dark-accent-purple: #B39EF3;
+            --dark-text-primary: #F5F7FA;
+            --dark-text-secondary: #B0B8C4;
+            
+            /* 亮色模式配色 */
+            --light-bg-primary: rgba(248, 250, 252, 0.6);
+            --light-bg-secondary: rgba(239, 242, 247, 0.7);
+            --light-accent-blue: #2E6FF2;
+            --light-accent-cyan: #16BFFD;
+            --light-accent-purple: #9370DB;
+            --light-text-primary: #1E293B;
+            --light-text-secondary: #64748B;
+        }
+
+        /* ===== 玻璃拟态基础样式 ===== */
+        .glass {
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-dark {
+            background: var(--dark-bg-primary);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass-light {
+            background: var(--light-bg-primary);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(200, 200, 200, 0.2);
+        }
+        
+        .glass-panel {
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+
+        /* ===== 霓虹效果 ===== */
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(97, 165, 250, 0.3),
+                        0 0 30px rgba(97, 165, 250, 0.1);
+        }
+        
+        .neon-border {
+            border: 1px solid rgba(97, 165, 250, 0.3);
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 10px rgba(97, 165, 250, 0.5);
+        }
+
+        /* ===== 暗色模式样式 ===== */
+        [data-theme="dark"] {
+            --bg-primary: var(--dark-bg-primary);
+            --bg-secondary: var(--dark-bg-secondary);
+            --accent: var(--dark-accent-ice);
+            --accent-secondary: var(--dark-accent-cyan);
+            --text-primary: var(--dark-text-primary);
+            --text-secondary: var(--dark-text-secondary);
+        }
+        
+        [data-theme="dark"] body {
+            background: linear-gradient(135deg, #0f1219 0%, #1a1f2e 50%, #0d1117 100%);
+            color: var(--dark-text-primary);
+        }
+        
+        [data-theme="dark"] .glass-panel {
+            background: var(--dark-bg-primary);
+            border: 1px solid rgba(97, 165, 250, 0.2);
+        }
+
+        /* ===== 亮色模式样式 ===== */
+        [data-theme="light"] {
+            --bg-primary: var(--light-bg-primary);
+            --bg-secondary: var(--light-bg-secondary);
+            --accent: var(--light-accent-blue);
+            --accent-secondary: var(--light-accent-cyan);
+            --text-primary: var(--light-text-primary);
+            --text-secondary: var(--light-text-secondary);
+        }
+        
+        [data-theme="light"] body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+            color: var(--light-text-primary);
+        }
+        
+        [data-theme="light"] .glass-panel {
+            background: var(--light-bg-primary);
+            border: 1px solid rgba(46, 111, 242, 0.15);
+        }
+
+        /* ===== 卡片悬浮效果 ===== */
+        .card-hover {
+            transition: all 0.3s ease-out;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(97, 165, 250, 0.15);
+        }
+
+        /* ===== 滚动条美化 ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(97, 165, 250, 0.3);
+            border-radius: 3px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(97, 165, 250, 0.5);
+        }
+
+        /* ===== 链接样式 ===== */
+        .content-area a {
+            color: var(--accent);
+            transition: color 0.2s;
+        }
+        
+        .content-area a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== 代码块霓虹高亮 ===== */
+        pre, code {
+            border-radius: 0.5rem;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+        
+        code {
+            padding: 0.125rem 0.375rem;
+            font-size: 0.875em;
+        }
+        
+        pre {
+            padding: 1rem;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+        
+        pre code {
+            padding: 0;
+            background: transparent !important;
+        }
+        
+        [data-theme="dark"] pre {
+            background: rgba(15, 18, 25, 0.9) !important;
+            border: 1px solid rgba(97, 165, 250, 0.2);
+        }
+        
+        [data-theme="dark"] code {
+            background: rgba(97, 165, 250, 0.1);
+            color: #61A5FA;
+        }
+        
+        [data-theme="light"] pre {
+            background: rgba(241, 245, 249, 0.95) !important;
+            border: 1px solid rgba(46, 111, 242, 0.15);
+        }
+        
+        [data-theme="light"] code {
+            background: rgba(46, 111, 242, 0.1);
+            color: #2E6FF2;
+        }
+        
+        /* Pygments/Highlight.js 代码高亮配色 */
+        .highlight .hll { background-color: rgba(97, 165, 250, 0.2); }
+        .highlight .c { color: #6a9955; font-style: italic; }   /* Comment */
+        .highlight .err { color: #f44747; }                      /* Error */
+        .highlight .k { color: #c586c0; }                        /* Keyword */
+        .highlight .o { color: #d4d4d4; }                        /* Operator */
+        .highlight .cm { color: #6a9955; font-style: italic; }   /* Comment.Multiline */
+        .highlight .cp { color: #c586c0; }                       /* Comment.Preproc */
+        .highlight .c1 { color: #6a9955; font-style: italic; }   /* Comment.Single */
+        .highlight .cs { color: #6a9955; font-style: italic; }   /* Comment.Special */
+        .highlight .gd { color: #f44747; }                       /* Generic.Deleted */
+        .highlight .ge { font-style: italic; }                   /* Generic.Emph */
+        .highlight .gr { color: #f44747; }                       /* Generic.Error */
+        .highlight .gh { color: #569cd6; font-weight: bold; }    /* Generic.Heading */
+        .highlight .gi { color: #4ec9b0; }                       /* Generic.Inserted */
+        .highlight .go { color: #d4d4d4; }                       /* Generic.Output */
+        .highlight .gp { color: #6a9955; }                       /* Generic.Prompt */
+        .highlight .gs { font-weight: bold; }                    /* Generic.Strong */
+        .highlight .gu { color: #569cd6; }                       /* Generic.Subheading */
+        .highlight .gt { color: #f44747; }                       /* Generic.Traceback */
+        .highlight .kc { color: #569cd6; }                       /* Keyword.Constant */
+        .highlight .kd { color: #569cd6; }                       /* Keyword.Declaration */
+        .highlight .kn { color: #c586c0; }                       /* Keyword.Namespace */
+        .highlight .kp { color: #569cd6; }                       /* Keyword.Pseudo */
+        .highlight .kr { color: #569cd6; }                       /* Keyword.Reserved */
+        .highlight .kt { color: #4ec9b0; }                       /* Keyword.Type */
+        .highlight .m { color: #b5cea8; }                        /* Literal.Number */
+        .highlight .s { color: #ce9178; }                        /* Literal.String */
+        .highlight .na { color: #9cdcfe; }                       /* Name.Attribute */
+        .highlight .nb { color: #dcdcaa; }                       /* Name.Builtin */
+        .highlight .nc { color: #4ec9b0; }                       /* Name.Class */
+        .highlight .no { color: #4fc1ff; }                       /* Name.Constant */
+        .highlight .nd { color: #dcdcaa; }                       /* Name.Decorator */
+        .highlight .ni { color: #d4d4d4; }                       /* Name.Entity */
+        .highlight .ne { color: #f44747; }                       /* Name.Exception */
+        .highlight .nf { color: #dcdcaa; }                       /* Name.Function */
+        .highlight .nl { color: #9cdcfe; }                       /* Name.Label */
+        .highlight .nn { color: #4ec9b0; }                       /* Name.Namespace */
+        .highlight .nt { color: #569cd6; }                       /* Name.Tag */
+        .highlight .nv { color: #9cdcfe; }                       /* Name.Variable */
+        .highlight .ow { color: #c586c0; }                       /* Operator.Word */
+        .highlight .w { color: #d4d4d4; }                        /* Text.Whitespace */
+        .highlight .mf { color: #b5cea8; }                       /* Literal.Number.Float */
+        .highlight .mh { color: #b5cea8; }                       /* Literal.Number.Hex */
+        .highlight .mi { color: #b5cea8; }                       /* Literal.Number.Integer */
+        .highlight .mo { color: #b5cea8; }                       /* Literal.Number.Oct */
+        .highlight .sb { color: #ce9178; }                       /* Literal.String.Backtick */
+        .highlight .sc { color: #ce9178; }                       /* Literal.String.Char */
+        .highlight .sd { color: #ce9178; }                       /* Literal.String.Doc */
+        .highlight .s2 { color: #ce9178; }                       /* Literal.String.Double */
+        .highlight .se { color: #d7ba7d; }                       /* Literal.String.Escape */
+        .highlight .sh { color: #ce9178; }                       /* Literal.String.Heredoc */
+        .highlight .si { color: #ce9178; }                       /* Literal.String.Interpol */
+        .highlight .sx { color: #ce9178; }                       /* Literal.String.Other */
+        .highlight .sr { color: #d16969; }                       /* Literal.String.Regex */
+        .highlight .s1 { color: #ce9178; }                       /* Literal.String.Single */
+        .highlight .ss { color: #ce9178; }                       /* Literal.String.Symbol */
+        .highlight .bp { color: #4fc1ff; }                       /* Name.Builtin.Pseudo */
+        .highlight .vc { color: #9cdcfe; }                       /* Name.Variable.Class */
+        .highlight .vg { color: #9cdcfe; }                       /* Name.Variable.Global */
+        .highlight .vi { color: #9cdcfe; }                       /* Name.Variable.Instance */
+        .highlight .il { color: #b5cea8; }                       /* Literal.Number.Integer.Long */
+        
+        /* 行号样式 */
+        .highlight .linenos {
+            color: #6e7681;
+            padding-right: 1rem;
+            user-select: none;
+        }
+        
+        /* 代码块容器 */
+        .highlight {
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .highlight pre {
+            margin: 0;
+            border-radius: 0.5rem;
+        }
+        
+        .codehilite {
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .codehilite pre {
+            margin: 0;
+            border-radius: 0.5rem;
+        }
+
+        /* ===== 动画效果 ===== */
+        @keyframes breathe {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        
+        .breathe {
+            animation: breathe 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* 搜索高亮样式 */
+        .search-highlight {
+            background: rgba(77, 238, 234, 0.2);
+            color: #4DEEEA;
+            padding: 0.125rem 0.25rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
+        }
+        
+        [data-theme="light"] .search-highlight {
+            background: rgba(22, 191, 253, 0.2);
+            color: #16BFFD;
+        }
+
+        /* ===== 响应式侧边栏 ===== */
+        @media (max-width: 1024px) {
+            .sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                height: 100%;
+                z-index: 40;
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .sidebar-overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 30;
+                display: none;
+            }
+            .sidebar-overlay.open {
+                display: block;
+            }
+        }
+    </style>
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="min-h-screen antialiased">
+    <!-- 背景装饰 -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--accent)]/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[var(--accent-secondary)]/10 rounded-full blur-3xl"></div>
+    </div>
+    
+    <!-- 移动端侧边栏遮罩 -->
+    <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+    
+    <!-- 顶部导航 -->
+    {% include "partials/header.html" %}
+    
+    <div class="flex min-h-[calc(100vh-4rem)]">
+        <!-- 侧边栏 -->
+        {% include "partials/sidebar.html" %}
+        
+        <!-- 主内容区 -->
+        <main class="flex-1 px-4 py-8 lg:px-8 lg:ml-72">
+            <div class="max-w-4xl mx-auto">
+                {% block content %}
+                {{ page.content }}
+                {% endblock %}
+            </div>
+        </main>
+    </div>
+    
+    <!-- 页脚 -->
+    {% include "partials/footer.html" %}
+    
+    <!-- 回到顶部按钮 -->
+    <button id="back-to-top" 
+            class="fixed bottom-8 right-8 w-12 h-12 rounded-full glass-panel neon-border flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:neon-glow z-50"
+            onclick="scrollToTop()">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+    
+    <!-- JavaScript -->
+    <script>
+        // 主题切换
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+        
+        function updateThemeIcon(theme) {
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
+            if (theme === 'dark') {
+                sunIcon?.classList.remove('hidden');
+                moonIcon?.classList.add('hidden');
+            } else {
+                sunIcon?.classList.add('hidden');
+                moonIcon?.classList.remove('hidden');
+            }
+        }
+        
+        // 初始化主题
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        })();
+        
+        // 侧边栏切换（移动端）
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            sidebar?.classList.toggle('open');
+            overlay?.classList.toggle('open');
+        }
+        
+        // 移动端菜单切换
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu?.classList.toggle('hidden');
+        }
+        
+        // 回到顶部
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // 监听滚动显示/隐藏回到顶部按钮
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                btn?.classList.remove('opacity-0', 'invisible');
+                btn?.classList.add('opacity-100', 'visible');
+            } else {
+                btn?.classList.add('opacity-0', 'invisible');
+                btn?.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        // 搜索功能
+        let allArticles = [];
+        
+        // 加载所有文章数据
+        async function loadArticlesForSearch() {
+            try {
+                const response = await fetch('/posts/articles.json');
+                if (response.ok) {
+                    allArticles = await response.json();
+                }
+            } catch (e) {
+                console.error('加载文章数据失败:', e);
+            }
+        }
+        
+        loadArticlesForSearch();
+        
+        function toggleSearch() {
+            const searchModal = document.getElementById('search-modal');
+            searchModal?.classList.toggle('hidden');
+            if (!searchModal?.classList.contains('hidden')) {
+                document.getElementById('search-input')?.focus();
+            } else {
+                // 关闭时清空搜索
+                document.getElementById('search-input').value = '';
+                document.getElementById('search-results').innerHTML = '';
+            }
+        }
+        
+        // 搜索功能
+        document.getElementById('search-input')?.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('search-results');
+            
+            if (!query) {
+                resultsContainer.innerHTML = '';
+                return;
+            }
+            
+            // 搜索文章
+            const results = allArticles.filter(article => {
+                const titleMatch = article.title.toLowerCase().includes(query);
+                const contentMatch = article.content?.toLowerCase().includes(query);
+                const categoryMatch = article.category?.toLowerCase().includes(query);
+                const tagsMatch = article.tags?.some(tag => tag.toLowerCase().includes(query));
+                return titleMatch || contentMatch || categoryMatch || tagsMatch;
+            });
+            
+            if (results.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="text-center py-8 text-[var(--text-secondary)]">
+                        <svg class="w-16 h-16 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p>没有找到相关结果</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // 高亮搜索关键词
+            function highlightText(text, query) {
+                if (!text) return '';
+                const regex = new RegExp(`(${query})`, 'gi');
+                return text.replace(regex, '<mark class="search-highlight">$1</mark>');
+            }
+            
+            resultsContainer.innerHTML = `
+                <div class="space-y-2">
+                    ${results.slice(0, 10).map(article => `
+                        <a href="${article.url}" class="block p-3 rounded-lg hover:bg-white/10 transition-colors group">
+                            <h4 class="font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] mb-1">
+                                ${highlightText(article.title, query)}
+                            </h4>
+                            <p class="text-sm text-[var(--text-secondary)] line-clamp-2 mb-2">
+                                ${highlightText(article.content?.substring(0, 100) || '', query)}...
+                            </p>
+                            <div class="flex items-center gap-2 text-xs text-[var(--text-secondary)]">
+                                <span class="px-2 py-0.5 rounded bg-[var(--accent)]/10 text-[var(--accent)]">${article.category}</span>
+                                <span>${article.date}</span>
+                                ${article.reading_time ? `<span>· ${article.reading_time}分钟</span>` : ''}
+                            </div>
+                        </a>
+                    `).join('')}
+                </div>
+                ${results.length > 10 ? `<p class="text-center text-sm text-[var(--text-secondary)] mt-4">共找到 ${results.length} 篇文章，仅显示前 10 篇</p>` : ''}
+            `;
+        });
+        
+        // ESC 关闭搜索
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.getElementById('search-modal')?.classList.add('hidden');
+            }
+            // Ctrl/Cmd + K 打开搜索
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                toggleSearch();
+            }
+        });
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

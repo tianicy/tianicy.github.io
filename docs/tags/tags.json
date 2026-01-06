@@ -1,0 +1,52 @@
+[
+  {
+    "name": "python",
+    "count": 17,
+    "slug": "python"
+  },
+  {
+    "name": "javascript",
+    "count": 11,
+    "slug": "javascript"
+  },
+  {
+    "name": "html & css",
+    "count": 6,
+    "slug": "html---css"
+  },
+  {
+    "name": "其他1",
+    "count": 6,
+    "slug": "其他1"
+  },
+  {
+    "name": "其他2",
+    "count": 6,
+    "slug": "其他2"
+  },
+  {
+    "name": "django",
+    "count": 4,
+    "slug": "django"
+  },
+  {
+    "name": "react",
+    "count": 4,
+    "slug": "react"
+  },
+  {
+    "name": "vue",
+    "count": 4,
+    "slug": "vue"
+  },
+  {
+    "name": "fastapi",
+    "count": 3,
+    "slug": "fastapi"
+  },
+  {
+    "name": "flask",
+    "count": 3,
+    "slug": "flask"
+  }
+]

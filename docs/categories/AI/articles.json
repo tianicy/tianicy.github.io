@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Python 机器学习入门",
+    "date": "2026-01-03",
+    "category": "AI",
+    "tags": [
+      "python",
+      "其他2"
+    ],
+    "url": "/posts/2026-1-1/python-ml/",
+    "reading_time": 5
+  },
+  {
+    "title": "PyTorch 深度学习基础",
+    "date": "2025-12-30",
+    "category": "AI",
+    "tags": [
+      "python",
+      "其他2"
+    ],
+    "url": "/posts/2025/pytorch-basic/",
+    "reading_time": 5
+  },
+  {
+    "title": "TensorFlow 入门教程",
+    "date": "2025-11-25",
+    "category": "AI",
+    "tags": [
+      "python",
+      "其他2"
+    ],
+    "url": "/posts/2025/tensorflow-intro/",
+    "reading_time": 5
+  }
+]

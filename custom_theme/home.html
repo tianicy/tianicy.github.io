@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="space-y-8">
+    <!-- 欢迎横幅 -->
+    <section class="glass-panel rounded-2xl p-8 text-center neon-border relative overflow-hidden">
+        <!-- 背景图片 -->
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/assets/images/05.jpg')">
+            <!-- 半透明遮罩层 -->
+            <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
+        </div>
+        <!-- 内容层 -->
+        <div class="relative z-10">
+            <div class="inline-block p-4 rounded-2xl bg-gradient-to-br from-[var(--accent)]/20 to-[var(--accent-secondary)]/20 mb-4">
+                <svg class="w-16 h-16 text-[var(--accent)] float" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold mb-4 neon-text">{{ config.site_name }}</h1>
+            <p class="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+                {{ config.site_description | default("with passion as my torch, I seek life's deep significance") }}
+            </p>
+            <div class="flex justify-center gap-4 mt-6">
+                <a href="/about/" class="px-6 py-2 rounded-xl bg-gradient-to-r from-[var(--accent)] to-[var(--accent-secondary)] text-white font-medium hover:opacity-90 transition-opacity">
+                    了解更多
+                </a>
+                <a href="/posts/" class="px-6 py-2 rounded-xl glass neon-border hover:neon-glow transition-all">
+                    浏览文章
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 最新文章列表 -->
+    <section>
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+            <svg class="w-6 h-6 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+            </svg>
+            最新文章
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="featured-articles-container">
+            <!-- Loading State -->
+            <div class="col-span-1 md:col-span-2 text-center py-12">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--accent)]"></div>
+                <p class="mt-4 text-[var(--text-secondary)]">正在加载文章...</p>
+            </div>
+        </div>
+        
+        <!-- 查看更多按钮 -->
+        <div class="text-center mt-8">
+            <a href="/posts/" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl glass neon-border hover:neon-glow transition-all">
+                查看全部文章
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+    
+    <!-- 特色功能区 -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-panel rounded-2xl p-6 text-center card-hover">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-[var(--accent)]/10 flex items-center justify-center">
+                <svg class="w-7 h-7 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+            </div>
+            <h3 class="font-bold mb-2">快速响应</h3>
+            <p class="text-sm text-[var(--text-secondary)]">基于现代技术栈，提供极致的访问速度体验</p>
+        </div>
+        
+        <div class="glass-panel rounded-2xl p-6 text-center card-hover">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-[var(--accent-secondary)]/10 flex items-center justify-center">
+                <svg class="w-7 h-7 text-[var(--accent-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                </svg>
+            </div>
+            <h3 class="font-bold mb-2">暗黑模式</h3>
+            <p class="text-sm text-[var(--text-secondary)]">支持明暗主题切换，保护你的眼睛</p>
+        </div>
+        
+        <div class="glass-panel rounded-2xl p-6 text-center card-hover">
+            <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-purple-500/10 flex items-center justify-center">
+                <svg class="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                </svg>
+            </div>
+            <h3 class="font-bold mb-2">响应式设计</h3>
+            <p class="text-sm text-[var(--text-secondary)]">完美适配各种设备，随时随地阅读</p>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const container = document.getElementById('featured-articles-container');
+    
+    try {
+        const response = await fetch('{{ base_url }}/posts/articles.json');
+        if (!response.ok) throw new Error('Failed to fetch articles');
+        
+        const articles = await response.json();
+        
+        // 排序逻辑：Pin 优先 (true > false)，然后按日期降序
+        articles.sort((a, b) => {
+            // Pin 比较
+            if (a.pin && !b.pin) return -1;
+            if (!a.pin && b.pin) return 1;
+            
+            // 日期比较 (降序)
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return dateB - dateA;
+        });
+        
+        // 只展示前4篇
+        const featuredArticles = articles.slice(0, 4);
+        
+        // 背景图片数组 (使用 assets/images/ 中的前5张图片)
+        const bgImages = [
+            '/assets/images/01.jpg',
+            '/assets/images/02.jpg',
+            '/assets/images/03.jpg',
+            '/assets/images/04.jpg',
+            '/assets/images/05.jpg'
+        ];
+        
+        // 渲染 HTML
+        container.innerHTML = featuredArticles.map((article, index) => `
+            <article class='article-card glass-panel rounded-2xl overflow-hidden card-hover group'>
+                <!-- 封面图 -->
+                <div class='h-48 bg-cover bg-center relative' style='background-image: url("${bgImages[index % bgImages.length]}")'>
+                    <!-- 半透明遮罩层 -->
+                    <div class='absolute inset-0 bg-gradient-to-t from-black/60 to-transparent'></div>
+                </div>
+                <div class='p-6'>
+                    <div class='flex items-center gap-3 text-xs text-[var(--text-secondary)] mb-3'>
+                        <span class='px-2 py-1 rounded-full bg-[var(--accent)]/10 text-[var(--accent)]'>${article.category || '未分类'}</span>
+                        <span>${article.date}</span>
+                        ${article.reading_time ? `<span>${article.reading_time} 分钟阅读</span>` : ''}
+                    </div>
+                    <h3 class='text-xl font-bold mb-2 group-hover:text-[var(--accent)] transition-colors'>
+                        <a href='${article.url}'>${article.title}</a>
+                    </h3>
+                    <p class='text-sm text-[var(--text-secondary)] line-clamp-2'>
+                        ${article.content ? article.content.replace(/[#*`]/g, '').substring(0, 100) : ''}...
+                    </p>
+                    <div class='flex flex-wrap gap-2 mt-4'>
+                        ${(article.tags || []).map(tag => `<span class='px-2 py-0.5 text-xs rounded-full bg-white/10'>#${tag}</span>`).join('')}
+                    </div>
+                </div>
+            </article>
+        `).join('');
+        
+    } catch (error) {
+        console.error('Error loading articles:', error);
+        container.innerHTML = `
+            <div class="col-span-1 md:col-span-2 text-center py-12">
+                <p class="text-red-500">加载文章失败，请刷新页面重试。</p>
+            </div>
+        `;
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,27 @@
+[
+  {
+    "name": "web",
+    "count": 13,
+    "slug": "web"
+  },
+  {
+    "name": "backends",
+    "count": 12,
+    "slug": "backends"
+  },
+  {
+    "name": "others",
+    "count": 3,
+    "slug": "others"
+  },
+  {
+    "name": "db",
+    "count": 3,
+    "slug": "db"
+  },
+  {
+    "name": "AI",
+    "count": 3,
+    "slug": "AI"
+  }
+]

@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="content-area prose prose-invert max-w-none">
+    <!-- 文章头部信息（如果是文章页） -->
+    {% if page.meta.title %}
+    <header class="mb-8 not-prose">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 neon-text">{{ page.meta.title }}</h1>
+        
+        <div class="flex flex-wrap items-center gap-4 text-sm text-[var(--text-secondary)]">
+            <!-- 发布时间 -->
+            {% if page.meta.date %}
+            <span class="flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                {{ page.meta.date }}
+            </span>
+            {% endif %}
+            
+            <!-- 分类 -->
+            {% if page.meta.category %}
+            <a href="/categories/{{ page.meta.category }}/" class="flex items-center gap-1 hover:text-[var(--accent)]">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+                </svg>
+                {{ page.meta.category }}
+            </a>
+            {% endif %}
+            
+            <!-- 阅读时长 -->
+            {% if page.meta.reading_time %}
+            <span class="flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                {{ page.meta.reading_time }} 分钟阅读
+            </span>
+            {% endif %}
+        </div>
+        
+        <!-- 标签 -->
+        {% if page.meta.tags %}
+        <div class="flex flex-wrap gap-2 mt-4">
+            {% for tag in page.meta.tags %}
+            <a href="/tags/{{ tag }}/" class="px-3 py-1 text-xs rounded-full bg-white/10 hover:bg-[var(--accent)]/20 hover:neon-border transition-all">
+                #{{ tag }}
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </header>
+    {% endif %}
+    
+    <!-- 文章内容 -->
+    <div class="glass-panel rounded-2xl p-6 md:p-8">
+        {{ page.content }}
+    </div>
+    
+    <!-- 文章底部导航 -->
+    {% if page.previous_page or page.next_page %}
+    <nav class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 not-prose">
+        {% if page.previous_page %}
+        <a href="{{ page.previous_page.url | url }}" class="glass-panel rounded-xl p-4 card-hover group flex items-center gap-3">
+            <svg class="w-5 h-5 text-[var(--text-secondary)] group-hover:text-[var(--accent)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            <div>
+                <div class="text-xs text-[var(--text-secondary)]">上一篇</div>
+                <div class="text-sm font-medium group-hover:text-[var(--accent)] transition-colors">{{ page.previous_page.title }}</div>
+            </div>
+        </a>
+        {% else %}
+        <div></div>
+        {% endif %}
+        
+        {% if page.next_page %}
+        <a href="{{ page.next_page.url | url }}" class="glass-panel rounded-xl p-4 card-hover group flex items-center justify-end gap-3 text-right">
+            <div>
+                <div class="text-xs text-[var(--text-secondary)]">下一篇</div>
+                <div class="text-sm font-medium group-hover:text-[var(--accent)] transition-colors">{{ page.next_page.title }}</div>
+            </div>
+            <svg class="w-5 h-5 text-[var(--text-secondary)] group-hover:text-[var(--accent)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+        </a>
+        {% endif %}
+    </nav>
+    {% endif %}
+</article>
+
+<!-- Markdown 内容样式增强 -->
+<style>
+    .prose {
+        --tw-prose-body: var(--text-primary);
+        --tw-prose-headings: var(--text-primary);
+        --tw-prose-links: var(--accent);
+        --tw-prose-code: var(--accent);
+    }
+    
+    .prose h1, .prose h2, .prose h3, .prose h4 {
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+    }
+    
+    .prose h1 { font-size: 1.875rem; line-height: 2.25rem; }
+    .prose h2 { font-size: 1.5rem; line-height: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; }
+    .prose h3 { font-size: 1.25rem; line-height: 1.75rem; }
+    .prose h4 { font-size: 1.125rem; line-height: 1.75rem; }
+    
+    .prose p {
+        margin: 1rem 0;
+        line-height: 1.75;
+        color: var(--text-secondary);
+    }
+    
+    .prose a {
+        color: var(--accent);
+    }
+    
+    .prose a:hover {
+        text-decoration: underline;
+    }
+    
+    .prose code:not(pre code) {
+        padding: 0.125rem 0.375rem;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        background: rgba(97, 165, 250, 0.1);
+        color: var(--accent);
+    }
+    
+    .prose pre {
+        border-radius: 0.75rem;
+        padding: 1rem;
+        margin: 1rem 0;
+        overflow-x: auto;
+        position: relative;
+    }
+    
+    /* 代码块复制按钮 */
+    .prose pre .copy-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        background: rgba(97, 165, 250, 0.2);
+        color: var(--text-primary);
+        border: 1px solid rgba(97, 165, 250, 0.3);
+        border-radius: 0.375rem;
+        font-size: 0.75rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .prose pre:hover .copy-button {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .prose pre .copy-button:hover {
+        background: rgba(97, 165, 250, 0.3);
+        border-color: var(--accent);
+    }
+    
+    .prose pre .copy-button.copied {
+        background: rgba(74, 222, 128, 0.2);
+        border-color: rgba(74, 222, 128, 0.5);
+        color: #4ade80;
+    }
+    
+    /* 代码高亮主题 */
+    .prose pre code {
+        background: transparent;
+        color: var(--text-primary);
+        padding: 0;
+    }
+    
+    /* 暗色模式代码高亮 */
+    [data-theme="dark"] .prose pre {
+        background: rgba(15, 18, 25, 0.8) !important;
+        border: 1px solid rgba(97, 165, 250, 0.2);
+    }
+    
+    [data-theme="dark"] .prose pre code {
+        color: #f8fafc;
+    }
+    
+    /* 亮色模式代码高亮 */
+    [data-theme="light"] .prose pre {
+        background: rgba(241, 245, 249, 0.9) !important;
+        border: 1px solid rgba(46, 111, 242, 0.15);
+    }
+    
+    [data-theme="light"] .prose pre code {
+        color: #1e293b;
+    }
+    
+    .prose blockquote {
+        border-left: 4px solid var(--accent);
+        padding-left: 1rem;
+        margin: 1rem 0;
+        font-style: italic;
+        color: var(--text-secondary);
+    }
+    
+    .prose ul, .prose ol {
+        margin: 1rem 0;
+        padding-left: 1.5rem;
+        color: var(--text-secondary);
+    }
+    
+    .prose li {
+        margin: 0.25rem 0;
+    }
+    
+    .prose ul li {
+        list-style-type: disc;
+    }
+    
+    .prose ol li {
+        list-style-type: decimal;
+    }
+    
+    .prose img {
+        border-radius: 0.75rem;
+        margin: 1rem 0;
+        max-width: 100%;
+    }
+    
+    .prose table {
+        width: 100%;
+        margin: 1rem 0;
+        border-collapse: collapse;
+    }
+    
+    .prose th, .prose td {
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 0.5rem 1rem;
+        text-align: left;
+    }
+    
+    .prose th {
+        background: rgba(97, 165, 250, 0.1);
+    }
+    
+    .prose hr {
+        margin: 2rem 0;
+        border-color: rgba(97, 165, 250, 0.2);
+    }
+</style>
+
+<script>
+    // 为代码块添加复制按钮
+    document.addEventListener('DOMContentLoaded', function() {
+        const preElements = document.querySelectorAll('pre');
+        
+        preElements.forEach(pre => {
+            // 创建复制按钮
+            const copyButton = document.createElement('button');
+            copyButton.className = 'copy-button';
+            copyButton.textContent = '复制';
+            
+            // 添加复制功能
+            copyButton.addEventListener('click', function() {
+                // 获取代码内容
+                const code = pre.querySelector('code');
+                if (code) {
+                    const text = code.textContent;
+                    
+                    // 复制到剪贴板
+                    navigator.clipboard.writeText(text).then(() => {
+                        // 显示复制成功状态
+                        copyButton.textContent = '已复制';
+                        copyButton.classList.add('copied');
+                        
+                        // 2秒后恢复原状
+                        setTimeout(() => {
+                            copyButton.textContent = '复制';
+                            copyButton.classList.remove('copied');
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('复制失败:', err);
+                        copyButton.textContent = '复制失败';
+                        
+                        setTimeout(() => {
+                            copyButton.textContent = '复制';
+                        }, 2000);
+                    });
+                }
+            });
+            
+            // 将按钮添加到代码块
+            pre.appendChild(copyButton);
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,205 @@
+<!-- 侧边栏 -->
+<aside id="sidebar" class="sidebar fixed lg:fixed left-0 top-16 w-72 h-[calc(100vh-4rem)] glass-panel backdrop-blur-xl overflow-y-auto z-40 lg:translate-x-0">
+    <div class="p-6 space-y-6">
+        <!-- 博主信息卡片 -->
+        <div class="text-center space-y-4">
+            <!-- 头像 -->
+            <div class="relative inline-block">
+                <div class="w-24 h-24 rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent-secondary)] p-1 neon-glow float">
+                    <div class="w-full h-full rounded-full bg-[var(--bg-primary)] flex items-center justify-center overflow-hidden">
+                            <!-- 默认头像图标 -->
+                            <!-- <svg class="w-12 h-12 text-[var(--accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg> -->
+                            <!-- 头像图片使用绝对路径 -->
+                            <img
+                            class="w-full h-full rounded-full object-cover"
+                            src="/assets/avatar/avatar.jpg"
+                            alt="我的头像"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                            <!-- 默认头像图标（图片加载失败时显示） -->
+                            <svg class="w-12 h-12 text-[var(--accent)]" style="display:none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                    </div>
+                </div>
+                <!-- 在线状态指示 -->
+                <span class="absolute bottom-1 right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-[var(--bg-primary)] breathe"></span>
+            </div>
+            
+            <!-- 昵称 -->
+            <div>
+                <h2 class="text-xl font-bold neon-text">zhaotian</h2>
+                <p class="text-sm text-[var(--text-secondary)] mt-1">「life」、「tech」 、「build」</p>
+            </div>
+            
+            <!-- 社交链接 -->
+            <div class="flex justify-center gap-3">
+                <a href="#" class="p-2 rounded-lg hover:bg-white/10 hover:neon-glow transition-all" title="GitHub">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+                    </svg>
+                </a>
+                <a href="#" class="p-2 rounded-lg hover:bg-white/10 hover:neon-glow transition-all" title="邮箱">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                </a>
+                <a href="#" class="p-2 rounded-lg hover:bg-white/10 hover:neon-glow transition-all" title="微信公众号">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.14.045c.134 0 .24-.111.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.492.492 0 01.178-.553C23.028 18.28 24 16.508 24 14.62c0-3.352-3.075-5.71-6.861-5.76zm-3.088 2.87c.536 0 .97.44.97.984a.98.98 0 01-.97.983.98.98 0 01-.969-.983c0-.545.433-.984.97-.984zm4.844 0c.536 0 .97.44.97.984a.98.98 0 01-.97.983.98.98 0 01-.97-.983c0-.545.434-.984.97-.984z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <!-- 分隔线 -->
+        <div class="h-px bg-gradient-to-r from-transparent via-[var(--accent)]/30 to-transparent"></div>
+        
+        <!-- 站点统计 -->
+        <div class="grid grid-cols-3 gap-2 text-center">
+            <div class="p-3 rounded-xl hover:bg-white/5 transition-colors cursor-pointer">
+                <div class="text-xl font-bold text-[var(--accent)]" id="stats-articles">-</div>
+                <div class="text-xs text-[var(--text-secondary)]">文章</div>
+            </div>
+            <div class="p-3 rounded-xl hover:bg-white/5 transition-colors cursor-pointer">
+                <div class="text-xl font-bold text-[var(--accent-secondary)]" id="stats-categories">-</div>
+                <div class="text-xs text-[var(--text-secondary)]">分类</div>
+            </div>
+            <div class="p-3 rounded-xl hover:bg-white/5 transition-colors cursor-pointer">
+                <div class="text-xl font-bold text-purple-400" id="stats-tags">-</div>
+                <div class="text-xs text-[var(--text-secondary)]">标签</div>
+            </div>
+        </div>
+        
+        <!-- 分隔线 -->
+        <div class="h-px bg-gradient-to-r from-transparent via-[var(--accent)]/30 to-transparent"></div>
+        
+        <!-- 内容导航 -->
+        <div class="space-y-4">
+            <!-- 分类列表 -->
+            <div>
+                <h3 class="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+                    </svg>
+                    分类
+                </h3>
+                <ul class="space-y-1" id="sidebar-categories-list">
+                    <li class="text-center text-sm text-[var(--text-secondary)]">加载中...</li>
+                </ul>
+            </div>
+            
+            <!-- 标签云 -->
+            <div>
+                <h3 class="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+                    </svg>
+                    标签
+                </h3>
+                <div class="flex flex-wrap gap-2" id="sidebar-tags-list">
+                    <span class="text-xs text-[var(--text-secondary)]">加载中...</span>
+                </div>
+            </div>
+            
+            <!-- 最新文章 -->
+            <div>
+                <h3 class="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    最新文章
+                </h3>
+                <ul class="space-y-2" id="sidebar-recent-articles">
+                    <li class="text-center text-sm text-[var(--text-secondary)]">加载中...</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 分隔线 -->
+        <div class="h-px bg-gradient-to-r from-transparent via-[var(--accent)]/30 to-transparent"></div>
+        
+        <!-- 友情链接 -->
+        <div>
+            <h3 class="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wider mb-3 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+                </svg>
+                友情链接
+            </h3>
+            <div class="flex flex-wrap gap-2">
+                <a href="#" target="_blank" class="px-3 py-1 text-xs rounded-lg bg-white/5 hover:bg-white/10 hover:neon-border transition-all">友链1</a>
+                <a href="#" target="_blank" class="px-3 py-1 text-xs rounded-lg bg-white/5 hover:bg-white/10 hover:neon-border transition-all">友链2</a>
+                <a href="#" target="_blank" class="px-3 py-1 text-xs rounded-lg bg-white/5 hover:bg-white/10 hover:neon-border transition-all">友链3</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 侧边霓虹光带 -->
+    <div class="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[var(--accent)]/50 to-transparent"></div>
+</aside>
+
+<script>
+// 侧边栏动态数据加载
+document.addEventListener('DOMContentLoaded', async () => {
+    // 加载分类
+    try {
+        const categoriesRes = await fetch('/categories/categories.json');
+        if (categoriesRes.ok) {
+            const categories = await categoriesRes.json();
+            const categoriesList = document.getElementById('sidebar-categories-list');
+            categoriesList.innerHTML = categories.map(cat => `
+                <li>
+                    <a href="/categories/${encodeURIComponent(cat.slug)}/" class="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-white/10 hover:neon-glow transition-all group">
+                        <span class="group-hover:text-[var(--accent)]">${cat.name}</span>
+                        <span class="text-xs px-2 py-0.5 rounded-full bg-white/10">${cat.count}</span>
+                    </a>
+                </li>
+            `).join('');
+            // 更新分类统计
+            document.getElementById('stats-categories').textContent = categories.length;
+        }
+    } catch (e) {
+        console.error('加载分类失败:', e);
+    }
+    
+    // 加载标签
+    try {
+        const tagsRes = await fetch('/tags/tags.json');
+        if (tagsRes.ok) {
+            const tags = await tagsRes.json();
+            const tagsList = document.getElementById('sidebar-tags-list');
+            tagsList.innerHTML = tags.slice(0, 6).map(tag => `
+                <a href="/tags/${encodeURIComponent(tag.slug)}/" class="px-3 py-1 text-xs rounded-full bg-white/10 hover:bg-[var(--accent)]/20 hover:neon-border transition-all">${tag.name}</a>
+            `).join('');
+            // 更新标签统计
+            document.getElementById('stats-tags').textContent = tags.length;
+        }
+    } catch (e) {
+        console.error('加载标签失败:', e);
+    }
+    
+    // 加载最新文章
+    try {
+        const articlesRes = await fetch('/posts/articles.json');
+        if (articlesRes.ok) {
+            const articles = await articlesRes.json();
+            articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+            const recentArticles = document.getElementById('sidebar-recent-articles');
+            recentArticles.innerHTML = articles.slice(0, 3).map(article => `
+                <li>
+                    <a href="${article.url}" class="block p-2 rounded-lg hover:bg-white/10 transition-colors group">
+                        <p class="text-sm line-clamp-2 group-hover:text-[var(--accent)]">${article.title}</p>
+                        <p class="text-xs text-[var(--text-secondary)] mt-1">${article.date}</p>
+                    </a>
+                </li>
+            `).join('');
+            // 更新文章统计
+            document.getElementById('stats-articles').textContent = articles.length;
+        }
+    } catch (e) {
+        console.error('加载文章失败:', e);
+    }
+});
+</script>
