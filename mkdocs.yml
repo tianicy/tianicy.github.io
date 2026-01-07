@@ -8,17 +8,23 @@ theme:
   name: null
   custom_dir: custom_theme
 
-# 静态资源目录
+# 复制静态资源目录到构建输出
 extra_css: []
 extra_javascript: []
 
-# 复制静态资源目录到构建输出
+# 额外配置
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/tianicy/tianicy.github.io
     - icon: fontawesome/solid/envelope
-      link: mailto:your@email.com
+      link: mailto:admin@qq.com
+  rss:
+    url: /feed_rss_created.xml
+  icp:
+    enabled: false
+    number: "京ICP备XXXXXXXX号"
+    link: "https://beian.miit.gov.cn/"
 nav:
   - 首页: index.md
   - 文章: posts/index.md
@@ -59,14 +65,6 @@ plugins:
 # Hooks 配置
 hooks:
   - hooks.py
-
-# 额外配置
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/tianicy/tianicy.github.io
-    - icon: fontawesome/solid/envelope
-      link: mailto:your@email.com
 
 # 开发服务器配置
 dev_addr: 127.0.0.1:8000
