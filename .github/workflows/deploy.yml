@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install mkdocs mkdocs-git-revision-date-localized-plugin mkdocs-rss-plugin
+          pip install -r requirements.txt
 
       # 构建项目
       - name: Build MkDocs site
