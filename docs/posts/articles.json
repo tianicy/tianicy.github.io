@@ -1,17 +1,5 @@
 [
   {
-    "title": "云计算与操作系统的协同发展",
-    "date": "2025-11-01 00:00",
-    "category": "Internet",
-    "tags": [
-      "os"
-    ],
-    "reading_time": 12,
-    "pin": false,
-    "url": "/posts/2025/cloud-os-integration/",
-    "content": "随着云计算技术的飞速发展，操作系统也在不断演进以适应云环境的需求。本文将探讨云计算与操作系统的协同发展趋势，以及它们如何相互影响和推动。 云原生操作系统是专门为云环境设计的操作系统，它具有以下特点： - 轻量化设计 - 容器化支持 - 微服务架构 - 弹性伸缩能力 - 自动化管理 coreosctl update coreosctl container list ros config list r"
-  },
-  {
     "title": "CSS 动画与过渡效果",
     "date": "2025-11-27 00:00",
     "category": "web",

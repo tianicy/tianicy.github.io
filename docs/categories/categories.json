@@ -10,11 +10,6 @@
     "slug": "backends"
   },
   {
-    "name": "Internet",
-    "count": 3,
-    "slug": "Internet"
-  },
-  {
     "name": "others",
     "count": 3,
     "slug": "others"
@@ -28,5 +23,10 @@
     "name": "AI",
     "count": 3,
     "slug": "AI"
+  },
+  {
+    "name": "Internet",
+    "count": 2,
+    "slug": "Internet"
   }
 ]

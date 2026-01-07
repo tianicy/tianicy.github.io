@@ -40,11 +40,6 @@
     "slug": "vue"
   },
   {
-    "name": "os",
-    "count": 3,
-    "slug": "os"
-  },
-  {
     "name": "fastapi",
     "count": 3,
     "slug": "fastapi"
@@ -53,5 +48,10 @@
     "name": "flask",
     "count": 3,
     "slug": "flask"
+  },
+  {
+    "name": "os",
+    "count": 2,
+    "slug": "os"
   }
 ]
