@@ -172,7 +172,7 @@
       "os"
     ],
     "reading_time": 12,
-    "pin": false,
+    "pin": true,
     "url": "/posts/2025/os-performance-optimization/",
     "content": "操作系统是计算机系统的核心，其性能直接影响整个系统的运行效率。本文将介绍一些实用的操作系统性能优化技巧，适用于不同的操作系统平台。 top htop nice -n 10 ./myapp sudo renice -n 5 -p 1234 systemctl list-unit-files --state=enabled sudo systemctl disable unnecessary.serv"
   },
@@ -469,7 +469,7 @@
       "html & css"
     ],
     "reading_time": 5,
-    "pin": true,
+    "pin": false,
     "url": "/posts/2026-1-1/welcome/",
     "content": "本文介绍如何使用 Tailwind CSS v4 和 DaisyUI v5 构建一个具有玻璃拟态风格的现代化博客主题。 Tailwind CSS v4 带来了革命性的变化： 1. 更快的构建速度 - 全新的 Rust 引擎 2. 更小的文件体积 - 优化的输出 3. 更简洁的配置 - 无需 tailwindcss.config.js 4. 原生 CSS 变量支持 - 更灵活的主题定制 玻璃拟态（G"
   }

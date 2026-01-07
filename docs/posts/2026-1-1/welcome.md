@@ -4,7 +4,6 @@ date: 2026-01-05
 category: backends
 tags: ['html & css']
 reading_time: 5
-pin: true
 ---
 
 # 使用 Tailwind CSS 构建现代化博客主题

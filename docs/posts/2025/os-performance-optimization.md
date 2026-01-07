@@ -4,6 +4,7 @@ date: 2025-10-10
 category: Internet
 tags: ['os']
 reading_time: 12
+pin: true
 ---
 
 # 操作系统性能优化实用指南
