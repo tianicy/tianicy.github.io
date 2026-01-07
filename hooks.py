@@ -184,16 +184,21 @@ def generate_tags_json(config):
     
     tags_index.sort(key=lambda x: x['count'], reverse=True)
     
-    # 写入 tags.json
+    # 只保留前12个标签用于展示
+    top_12_tags = tags_index[:12]
+    
+    # 写入 tags.json（只包含前12个标签）
     tags_dir.mkdir(exist_ok=True)
     with open(tags_dir / 'tags.json', 'w', encoding='utf-8') as f:
-        json.dump(tags_index, f, ensure_ascii=False, indent=2)
+        json.dump(top_12_tags, f, ensure_ascii=False, indent=2)
     
-    print(f"[hooks] 已生成 tags.json，共 {len(tags_index)} 个标签")
+    print(f"[hooks] 已生成 tags.json，共 {len(top_12_tags)} 个标签（显示前12个）")
     
-    # 为每个标签生成文章列表和 index.md
-    for tag_name, tag_articles in tags_map.items():
-        tag_slug = tag_name.lower().replace(' ', '-').replace('.', '-').replace('&', '-')
+    # 只为前12个标签生成文章列表和 index.md
+    for tag_info in top_12_tags:
+        tag_name = tag_info['name']
+        tag_slug = tag_info['slug']
+        tag_articles = tags_map.get(tag_name, [])
         tag_dir = tags_dir / tag_slug
         tag_dir.mkdir(exist_ok=True)
         
@@ -245,15 +250,20 @@ def generate_categories_json(config):
     
     categories_index.sort(key=lambda x: x['count'], reverse=True)
     
-    # 写入 categories.json
+    # 只保留前6个分类用于展示
+    top_6_categories = categories_index[:6]
+    
+    # 写入 categories.json（只包含前6个分类）
     categories_dir.mkdir(exist_ok=True)
     with open(categories_dir / 'categories.json', 'w', encoding='utf-8') as f:
-        json.dump(categories_index, f, ensure_ascii=False, indent=2)
+        json.dump(top_6_categories, f, ensure_ascii=False, indent=2)
     
-    print(f"[hooks] 已生成 categories.json，共 {len(categories_index)} 个分类")
+    print(f"[hooks] 已生成 categories.json，共 {len(top_6_categories)} 个分类（显示前6个）")
     
-    # 为每个分类生成文章列表和 index.md
-    for cat_name, cat_articles in categories_map.items():
+    # 只为前6个分类生成文章列表和 index.md
+    for cat_info in top_6_categories:
+        cat_name = cat_info['name']
+        cat_articles = categories_map.get(cat_name, [])
         cat_dir = categories_dir / cat_name
         cat_dir.mkdir(exist_ok=True)
         

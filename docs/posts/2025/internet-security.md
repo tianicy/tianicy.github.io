@@ -1,8 +1,8 @@
 ---
 title: 互联网安全最佳实践指南
 date: 2025-10-15
-category: 互联网
-tags: ['互联网', '安全', '操作系统']
+category: Internet
+tags: ['os']
 reading_time: 15
 ---
 

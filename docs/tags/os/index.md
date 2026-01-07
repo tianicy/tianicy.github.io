@@ -1,10 +1,10 @@
 ---
-title: 安全 标签文章列表
+title: os 标签文章列表
 date: 2025-01-01
 ---
 
 <div id="tag-header">
-    <h1 id="tag-title">🔖 安全</h1>
+    <h1 id="tag-title">🔖 os</h1>
     <p id="tag-description" class="text-[var(--text-secondary)]"></p>
 </div>
 
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let allArticles = [];
     
     try {
-        const response = await fetch('/tags/安全/articles.json');
+        const response = await fetch('/tags/os/articles.json');
         if (!response.ok) throw new Error('Failed');
         allArticles = await response.json();
         descEl.textContent = `共 ${allArticles.length} 篇文章`;

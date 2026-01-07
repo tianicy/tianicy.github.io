@@ -1,8 +1,8 @@
 ---
 title: 云计算与操作系统的协同发展
 date: 2025-11-01
-category: 互联网
-tags: ['互联网', '云计算', '操作系统']
+category: Internet
+tags: ['os']
 reading_time: 12
 ---
 

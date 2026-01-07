@@ -1,8 +1,8 @@
 ---
 title: 操作系统性能优化实用指南
 date: 2025-10-10
-category: 互联网
-tags: ['互联网', '操作系统', '性能优化']
+category: Internet
+tags: ['os']
 reading_time: 12
 ---
 

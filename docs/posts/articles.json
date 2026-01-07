@@ -2,11 +2,9 @@
   {
     "title": "云计算与操作系统的协同发展",
     "date": "2025-11-01 00:00",
-    "category": "互联网",
+    "category": "Internet",
     "tags": [
-      "互联网",
-      "云计算",
-      "操作系统"
+      "os"
     ],
     "reading_time": 12,
     "pin": false,
@@ -132,11 +130,9 @@
   {
     "title": "互联网安全最佳实践指南",
     "date": "2025-10-15 00:00",
-    "category": "互联网",
+    "category": "Internet",
     "tags": [
-      "互联网",
-      "安全",
-      "操作系统"
+      "os"
     ],
     "reading_time": 15,
     "pin": false,
@@ -171,11 +167,9 @@
   {
     "title": "操作系统性能优化实用指南",
     "date": "2025-10-10 00:00",
-    "category": "互联网",
+    "category": "Internet",
     "tags": [
-      "互联网",
-      "操作系统",
-      "性能优化"
+      "os"
     ],
     "reading_time": 12,
     "pin": false,

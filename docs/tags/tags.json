@@ -40,14 +40,9 @@
     "slug": "vue"
   },
   {
-    "name": "互联网",
+    "name": "os",
     "count": 3,
-    "slug": "互联网"
-  },
-  {
-    "name": "操作系统",
-    "count": 3,
-    "slug": "操作系统"
+    "slug": "os"
   },
   {
     "name": "fastapi",
@@ -58,20 +53,5 @@
     "name": "flask",
     "count": 3,
     "slug": "flask"
-  },
-  {
-    "name": "云计算",
-    "count": 1,
-    "slug": "云计算"
-  },
-  {
-    "name": "安全",
-    "count": 1,
-    "slug": "安全"
-  },
-  {
-    "name": "性能优化",
-    "count": 1,
-    "slug": "性能优化"
   }
 ]

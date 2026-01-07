@@ -1,11 +1,11 @@
 ---
-title: 性能优化 标签文章列表
+title: Internet文章列表
 date: 2025-01-01
 ---
 
-<div id="tag-header">
-    <h1 id="tag-title">🔖 性能优化</h1>
-    <p id="tag-description" class="text-[var(--text-secondary)]"></p>
+<div id="category-header">
+    <h1 id="category-title">🔧 Internet</h1>
+    <p id="category-description" class="text-[var(--text-secondary)]"></p>
 </div>
 
 <div class="article-list" id="articles-container">
@@ -40,14 +40,14 @@ date: 2025-01-01
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
     const container = document.getElementById('articles-container');
-    const descEl = document.getElementById('tag-description');
+    const descEl = document.getElementById('category-description');
     const paginationContainer = document.getElementById('pagination-container');
     const ARTICLES_PER_PAGE = 5;
     let currentPage = 1;
     let allArticles = [];
     
     try {
-        const response = await fetch('/tags/性能优化/articles.json');
+        const response = await fetch('/categories/Internet/articles.json');
         if (!response.ok) throw new Error('Failed');
         allArticles = await response.json();
         descEl.textContent = `共 ${allArticles.length} 篇文章`;
