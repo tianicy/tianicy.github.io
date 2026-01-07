@@ -70,9 +70,24 @@ def parse_article(md_file: Path, posts_dir: Path) -> dict:
     # 提取摘要
     summary = extract_summary(body)
     
+    # 处理日期格式，确保符合 RSS 插件要求 '%Y-%m-%d %H:%M'
+    date = front_matter.get('date', '2000-01-01')
+    date_str = str(date)
+    
+    # 如果日期格式是 'YYYY-M-D' 或 'YYYY-MM-DD'，添加默认时间 '00:00'
+    if '-' in date_str and ':' not in date_str:
+        # 确保月份和日期是两位数
+        parts = date_str.split('-')
+        if len(parts) == 3:
+            year, month, day = parts
+            # 转换为两位数格式
+            month = month.zfill(2)
+            day = day.zfill(2)
+            date_str = f"{year}-{month}-{day} 00:00"
+    
     return {
         'title': front_matter.get('title', md_file.stem),
-        'date': str(front_matter.get('date', '2000-01-01')),
+        'date': date_str,
         'category': front_matter.get('category', 'others'),
         'tags': front_matter.get('tags', []),
         'reading_time': front_matter.get('reading_time', estimate_reading_time(body)),
@@ -251,11 +266,80 @@ def generate_categories_json(config):
             f.write(generate_category_index_md(cat_name))
     
     print(f"[hooks] 已生成所有分类的文章列表")
+    
+    # 生成图片列表 JSON 文件，用于动态加载图片
+    generate_images_json(config)
+
+
+def generate_images_json(config):
+    """生成图片列表 JSON 文件，用于动态加载图片"""
+    docs_dir = Path(config['docs_dir'])
+    
+    # 1. 生成首页特色文章背景图片列表
+    images_dir = docs_dir / 'assets' / 'images'
+    images = []
+    
+    if images_dir.exists():
+        # 只获取 .jpg 和 .png 图片
+        for img_file in images_dir.glob('*.jpg'):
+            images.append(f"/assets/images/{img_file.name}")
+        for img_file in images_dir.glob('*.png'):
+            images.append(f"/assets/images/{img_file.name}")
+        
+        # 按文件名排序
+        images.sort()
+        
+        # 写入 images.json
+        with open(docs_dir / 'assets' / 'images.json', 'w', encoding='utf-8') as f:
+            json.dump(images, f, ensure_ascii=False, indent=2)
+        
+        print(f"[hooks] 已生成 images.json，共 {len(images)} 张图片")
+    
+    # 2. 生成分类卡片背景图片列表
+    categories_images_dir = docs_dir / 'assets' / 'categories'
+    categories_images = []
+    
+    if categories_images_dir.exists():
+        # 只获取 .jpg 和 .png 图片
+        for img_file in categories_images_dir.glob('*.jpg'):
+            categories_images.append(f"/assets/categories/{img_file.name}")
+        for img_file in categories_images_dir.glob('*.png'):
+            categories_images.append(f"/assets/categories/{img_file.name}")
+        
+        # 按文件名排序
+        categories_images.sort()
+        
+        # 写入 categories_images.json
+        with open(docs_dir / 'assets' / 'categories_images.json', 'w', encoding='utf-8') as f:
+            json.dump(categories_images, f, ensure_ascii=False, indent=2)
+        
+        print(f"[hooks] 已生成 categories_images.json，共 {len(categories_images)} 张分类图片")
+    
+    # 3. 生成欢迎横幅背景图片列表
+    welcome_images_dir = docs_dir / 'assets' / 'welcome'
+    welcome_images = []
+    
+    if welcome_images_dir.exists():
+        # 只获取 .jpg 和 .png 图片
+        for img_file in welcome_images_dir.glob('*.jpg'):
+            welcome_images.append(f"/assets/welcome/{img_file.name}")
+        for img_file in welcome_images_dir.glob('*.png'):
+            welcome_images.append(f"/assets/welcome/{img_file.name}")
+        
+        # 按文件名排序
+        welcome_images.sort()
+        
+        # 写入 welcome_images.json
+        with open(docs_dir / 'assets' / 'welcome_images.json', 'w', encoding='utf-8') as f:
+            json.dump(welcome_images, f, ensure_ascii=False, indent=2)
+        
+        print(f"[hooks] 已生成 welcome_images.json，共 {len(welcome_images)} 张欢迎横幅图片")
 
 
 def generate_tag_index_md(tag_name: str, tag_slug: str) -> str:
     return f"""---
 title: {tag_name} 标签文章列表
+date: 2025-01-01
 ---
 
 <div id="tag-header">
@@ -349,6 +433,7 @@ document.addEventListener('DOMContentLoaded', async () => {{
 def generate_category_index_md(category_name: str) -> str:
     return f"""---
 title: {category_name}文章列表
+date: 2025-01-01
 ---
 
 <div id="category-header">

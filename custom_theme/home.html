@@ -5,7 +5,7 @@
     <!-- 欢迎横幅 -->
     <section class="glass-panel rounded-2xl p-8 text-center neon-border relative overflow-hidden">
         <!-- 背景图片 -->
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/assets/images/05.jpg')">
+        <div class="absolute inset-0 bg-cover bg-center" id="welcome-banner" style="background-image: url('/assets/welcome/01.jpg')">
             <!-- 半透明遮罩层 -->
             <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/60 to-black/70"></div>
         </div>
@@ -100,6 +100,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     const container = document.getElementById('featured-articles-container');
     
     try {
+        // 1. 动态加载欢迎横幅背景图片
+        const bannerElement = document.getElementById('welcome-banner');
+        if (bannerElement) {
+            try {
+                // 从welcome_images.json获取欢迎横幅图片列表
+                const imagesResponse = await fetch('{{ base_url }}/assets/welcome_images.json');
+                if (imagesResponse.ok) {
+                    const images = await imagesResponse.json();
+                    if (images.length > 0) {
+                        // 随机选择一张图片
+                        const randomImage = images[Math.floor(Math.random() * images.length)];
+                        bannerElement.style.backgroundImage = `url('${randomImage}')`;
+                    }
+                }
+            } catch (bannerError) {
+                console.warn('Failed to fetch welcome_images.json for banner:', bannerError);
+            }
+        }
+        
+        // 2. 加载文章数据
         const response = await fetch('{{ base_url }}/posts/articles.json');
         if (!response.ok) throw new Error('Failed to fetch articles');
         
@@ -120,14 +140,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         // 只展示前4篇
         const featuredArticles = articles.slice(0, 4);
         
-        // 背景图片数组 (使用 assets/images/ 中的前5张图片)
-        const bgImages = [
-            '/assets/images/01.jpg',
-            '/assets/images/02.jpg',
-            '/assets/images/03.jpg',
-            '/assets/images/04.jpg',
-            '/assets/images/05.jpg'
-        ];
+        // 动态加载背景图片列表
+        let bgImages = ['/assets/images/05.jpg']; // 默认图片，防止加载失败
+        try {
+            const imagesResponse = await fetch('{{ base_url }}/assets/images.json');
+            if (imagesResponse.ok) {
+                bgImages = await imagesResponse.json();
+            }
+        } catch (imagesError) {
+            console.warn('Failed to fetch images.json, using default image:', imagesError);
+        }
         
         // 渲染 HTML
         container.innerHTML = featuredArticles.map((article, index) => `

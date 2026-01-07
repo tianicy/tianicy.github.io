@@ -114,8 +114,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         // 颜色类名循环
         const colors = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6'];
         
+        // 基于文章数量排序（已排序，保持原有顺序）
+        // 只显示前12个标签
+        const topTags = tags.slice(0, 12);
+        
         // 渲染标签云
-        container.innerHTML = tags.map((tag, index) => `
+        container.innerHTML = topTags.map((tag, index) => `
             <a href="${tag.slug}/" class="tag-item ${colors[index % colors.length]}">
                 ${tag.name} 
                 <span class="tag-count">${tag.count}</span>

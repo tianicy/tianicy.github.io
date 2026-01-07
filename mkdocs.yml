@@ -1,7 +1,7 @@
 site_name: zhaotian
 site_description: with passion as my torch, I seek life's deep significance
 site_url: http://localhost:8000/
-repo_url: https://github.com/yourname/yourblog
+repo_url: https://github.com/tianicy/tianicy.github.io
 
 # 主题配置
 theme:
@@ -16,7 +16,7 @@ extra_javascript: []
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/yourname
+      link: https://github.com/tianicy/tianicy.github.io
     - icon: fontawesome/solid/envelope
       link: mailto:your@email.com
 nav:
@@ -52,6 +52,12 @@ markdown_extensions:
 # 插件配置
 plugins:
   - search
+  - git-revision-date-localized
+  - rss:
+      enabled: true
+      git_revision_date_localized:
+        as_creation: true
+        as_update: true
 
 # Hooks 配置
 hooks:
@@ -61,7 +67,7 @@ hooks:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/yourname
+      link: https://github.com/tianicy/tianicy.github.io
     - icon: fontawesome/solid/envelope
       link: mailto:your@email.com
 
