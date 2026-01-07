@@ -13,19 +13,6 @@
     "content": "这是关于 CSS 动画与过渡效果 的示例文章内容。 本文将详细介绍 CSS 动画与过渡效果 的相关知识和实践经验。 1. 基础概念讲解 2. 实战案例演示 3. 最佳实践总结 print(\"Hello, World!\") 希望本文对你有所帮助！"
   },
   {
-    "title": "Django 项目部署指南",
-    "date": "2025-11-24 00:00",
-    "category": "backends",
-    "tags": [
-      "django",
-      "python"
-    ],
-    "reading_time": 5,
-    "pin": false,
-    "url": "/posts/2025/django-deploy/",
-    "content": "这是关于 Django 项目部署指南 的示例文章内容。 本文将详细介绍 Django 项目部署指南 的相关知识和实践经验。 1. 基础概念讲解 2. 实战案例演示 3. 最佳实践总结 print(\"Hello, World!\") 希望本文对你有所帮助！"
-  },
-  {
     "title": "Django REST Framework 实战",
     "date": "2025-12-29 00:00",
     "category": "backends",

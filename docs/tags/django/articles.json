@@ -31,16 +31,5 @@
     ],
     "url": "/posts/2025/django-rest/",
     "reading_time": 5
-  },
-  {
-    "title": "Django 项目部署指南",
-    "date": "2025-11-24 00:00",
-    "category": "backends",
-    "tags": [
-      "django",
-      "python"
-    ],
-    "url": "/posts/2025/django-deploy/",
-    "reading_time": 5
   }
 ]

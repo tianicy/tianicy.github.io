@@ -1,7 +1,7 @@
 [
   {
     "name": "python",
-    "count": 17,
+    "count": 16,
     "slug": "python"
   },
   {
@@ -25,11 +25,6 @@
     "slug": "其他2"
   },
   {
-    "name": "django",
-    "count": 4,
-    "slug": "django"
-  },
-  {
     "name": "react",
     "count": 4,
     "slug": "react"
@@ -38,6 +33,11 @@
     "name": "vue",
     "count": 4,
     "slug": "vue"
+  },
+  {
+    "name": "django",
+    "count": 3,
+    "slug": "django"
   },
   {
     "name": "fastapi",
