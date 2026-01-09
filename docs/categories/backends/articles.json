@@ -7,7 +7,7 @@
       "django",
       "python"
     ],
-    "url": "/posts/2026-1-1/django-intro/",
+    "url": "/posts/2026-1/django-intro/",
     "reading_time": 5
   },
   {
@@ -18,7 +18,7 @@
       "flask",
       "python"
     ],
-    "url": "/posts/2026-1-1/flask-api/",
+    "url": "/posts/2026-1/flask-api/",
     "reading_time": 5
   },
   {
@@ -29,7 +29,7 @@
       "fastapi",
       "python"
     ],
-    "url": "/posts/2026-1-1/fastapi-async/",
+    "url": "/posts/2026-1/fastapi-async/",
     "reading_time": 5
   },
   {
@@ -39,7 +39,7 @@
     "tags": [
       "html & css"
     ],
-    "url": "/posts/2026-1-1/welcome/",
+    "url": "/posts/2026-1/welcome/",
     "reading_time": 5
   },
   {
@@ -50,7 +50,7 @@
       "django",
       "python"
     ],
-    "url": "/posts/2026-1-1/django-orm/",
+    "url": "/posts/2026-1/django-orm/",
     "reading_time": 5
   },
   {
@@ -61,7 +61,7 @@
       "flask",
       "python"
     ],
-    "url": "/posts/2026-1-1/flask-jwt/",
+    "url": "/posts/2026-1/flask-jwt/",
     "reading_time": 5
   },
   {
