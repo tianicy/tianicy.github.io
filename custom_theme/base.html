@@ -391,9 +391,10 @@
     
     <!-- 回到顶部按钮 -->
     <button id="back-to-top" 
-            class="fixed bottom-8 right-8 w-12 h-12 rounded-full glass-panel neon-border flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:neon-glow z-50"
-            onclick="scrollToTop()">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            class="fixed bottom-8 right-8 w-12 h-12 rounded-full glass-panel neon-border flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:neon-glow hover:bg-white/20 cursor-pointer z-50"
+            onclick="scrollToTop()"
+            title="回到顶部">
+        <svg class="w-5 h-5 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
         </svg>
     </button>

@@ -17,8 +17,13 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/tianicy/tianicy.github.io
-    - icon: fontawesome/solid/envelope
-      link: mailto:admin@qq.com
+      title: GitHub
+    - icon: fontawesome/brands/qq
+      link: https://qun.qq.com/universal-share/share?ac=1&authKey=RUb0R2e%2Fy9z3DzWiBPFKdafpiinHRA0gpF5N%2FtGH62dRUuu%2F7%2FjSKIX3WEoGAEad&busi_data=eyJncm91cENvZGUiOiI1MTQzODQ4NTkiLCJ0b2tlbiI6InFCUUJUTU1DbEpwOGpLbU8yeWtMR0xPeHpIWWhGak1zUkp5L1lNN285V3dRajBlN2lmb3dwZDI3SDVKQlY4bXgiLCJ1aW4iOiIyNjMzNjAzNDAzIn0%3D&data=YGkzgW_0L-EpFRL02rvMtaJekfGBWs6CRgZf-2K0uVoy2TJ5ufoTzZJGJKeJNysMp7gjbTTOTYw90T-dHDRGXA&svctype=4&tempid=h5_group_info
+      title: QQ群聊
+    - icon: fontawesome/brands/telegram
+      link: https://t.me/+NORkmA7DhvoxM2Jl
+      title: Telegram
   rss:
     url: /feed_rss_created.xml
   icp:
